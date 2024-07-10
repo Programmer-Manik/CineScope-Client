@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "cine-scope-server-six.vercel.app/api" }),
   tagTypes: ["movies"],
   endpoints: (builder) => ({
     getMovies: builder.query({
@@ -41,8 +41,8 @@ export const baseApi = createApi({
       queryFn: async (slug: string): Promise<any> => {
         try {
           const [movieResponse, reviewsResponse] = await Promise.all([
-            fetch(`http://localhost:5000/api/movies/${slug}`),
-            fetch(`http://localhost:5000/api/movies/${slug}/reviews`),
+            fetch(`cine-scope-server-six.vercel.app/api/movies/${slug}`),
+            fetch(`cine-scope-server-six.vercel.app/api/movies/${slug}/reviews`),
           ]);
 
           if (!movieResponse.ok || !reviewsResponse.ok) {
